@@ -1,14 +1,15 @@
+
 const signIn = () => {
   var provider = new firebase.auth.GoogleAuthProvider();
-  // console.log(provider)
+  // console.log(provider) an attempt to sign in
   firebase.auth()
-  .signInWithPopup(provider)
+  .signInWithPopup(provider) // returns a promise, if successful return with user login in data
   .then((result) => {
     /** @type {firebase.auth.OAuthCredential} */
-    var credential = result.credential;
-    var token = credential.accessToken;
+    var credential = result.credential; 
+    var token = credential.accessToken; //gives access
 
-    // The signed-in user info.
+    // The signed-in user info. if fails, will reuturn an error object
     var user = result.user;
     window.location = 'writeNote.html';
   }).catch((error) => {
